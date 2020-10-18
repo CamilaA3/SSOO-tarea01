@@ -1,39 +1,22 @@
 CC=gcc
-SRC=hola.c
-RM=rm -f
+SRC=main.c
+CFLAGS=-Wall -std=c17
 
-TARGET=../hora
+BIN=hora
 
-LDFLAGS=-L/usr/local/lib 
-LDLIBS=-lpthread
+OBJ=$(SRC:.c=.o)
 
-CXXFLAGS=-std=c++17 -Wall -O2
+all:  $(BIN)
 
-DIR_OBJ=objs
-
-SRCS=$(wildcard *.cc)
-
-OBJS=$(patsubst %.cc,$(DIR_OBJ)/%.o,$(SRCS))
-
-
-all: $(TARGET)
-	@echo Made [ $? ] OK :\)
-
-$(TARGET): $(OBJS)
-	@echo Linking [$@]
-	@$(CXX) -o $@ $^ $(CXXFLAGS) $(LDLIBS) $(LDFLAGS) 
-
-$(DIR_OBJ)/%.o: %.cc
-	@echo Compiling [$@]
-	@mkdir -p $(DIR_OBJ)
-	@$(CXX) -c -o $@ $< $(CXXFLAGS)
+$(BIN): $(OBJ)
+	$(CC) $(LIBS) $(OBJ) -o $(@)
+	@rm -f $(OBJ)
+	@rm -f *~
+	
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJS)
-	@$(RM) *~ core
-
-distclean: clean
-	@$(RM) $(TARGET)
-	@$(RM) -f $(DIR_OBJ)
-
-.PHONY: all clean distclean
+	@rm -f $(OBJ)
+	@rm -f *~
+	@rm -f $(BIN)
