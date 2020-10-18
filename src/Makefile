@@ -1,5 +1,5 @@
 CC=gcc
-CXX=g++
+SRC=hola.c
 RM=rm -f
 
 TARGET=../hora
