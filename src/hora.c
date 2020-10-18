@@ -14,15 +14,16 @@ void tiempo(){
 void signal_handler (int signumero)
 {
 	if (signumero == SIGUSR1){
-		printf("Se単al SIGUSR1 recibida= ";
+		printf("Se単al SIGUSR1 recibida= ");
 		tiempo();
 	}
 }
 
 void main(int argc, char* argv[]){
+	int nume=0;
 	printf("Proceso hora ejecutandose. PID=%d\n",getpid());
-	while(TRUE){
-	 printf("Listo para recibir la se単al SIGUSR1");
-	 tiempo();   
+	while(nume==0){
+	printf("Listo para recibir la se単al SIGUSR1");
+	signal_handler(SIGTERM) ;   
 	}
 }
