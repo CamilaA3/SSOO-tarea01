@@ -10,20 +10,21 @@ void tiempo(){
     strftime(final,100,"%a %b %d %X %Z %Y ",tlocal);//Se utiliza esta funcion para que se almacenen los datos pedidos dentro de la cadena de caracteres.
     printf("%s\n", final);
 }
-//Verifica el PID de la señal
-void signal_handler (int signumero)
-{
-	if (signumero == getpid()){
-		printf("Senal SIGUSR1 recibida: ");
-		tiempo();
-	}
-}
 
 void salida(int signum){
 	int conta=0;
 	conta++;
 	if(conta==2){
 		exit(signum);
+	}
+}
+
+//Verifica el PID de la señal
+void signal_handler (int signumero)
+{
+	if (signumero == getpid()){
+		printf("Senal SIGUSR1 recibida: ");
+		tiempo();
 	}
 }
 
