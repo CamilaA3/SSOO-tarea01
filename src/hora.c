@@ -1,7 +1,7 @@
 #include <signal.h>
 #include <time.h>
 #include <stdio.h>
-
+#include <unistd.h>
 
 void tiempo(){
     char final[100];//Cadena de caracteres que nos indicara el tiempo al final de la funcion.
@@ -13,17 +13,26 @@ void tiempo(){
 //Verifica el PID de la señal
 void signal_handler (int signumero)
 {
-	if (signumero == SIGUSR1){
-		printf("Se単al SIGUSR1 recibida= ");
+	if (signumero == getpid()){
+		printf("Senal SIGUSR1 recibida: ");
 		tiempo();
 	}
 }
 
+void salida(int signum){
+	int conta=0;
+	conta++;
+	if(conta==2){
+		exit(signum);
+	}
+}
+
 void main(int argc, char* argv[]){
-	int nume=0;
+	int contad=0;
 	printf("Proceso hora ejecutandose. PID=%d\n",getpid());
-	while(nume==0){
-	printf("Listo para recibir la se単al SIGUSR1");
-	signal_handler(SIGTERM) ;   
+	while(conta==0){
+		printf("Listo para recibir la senal SIGUSR1. "
+		signal(SIGUSR1, signal_handler);
+		signal(SIGINT, salida);
 	}
 }
