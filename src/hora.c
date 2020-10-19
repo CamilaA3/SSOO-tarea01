@@ -30,9 +30,9 @@ void signal_handler (int signumero)
 
 void main(int argc, char* argv[]){
 	int contad=0;
-	printf("Proceso hora ejecutandose. PID=%d\n",getpid());
+	printf("Proceso hora ejecutandose. PID=%d ",getpid());
 	while(contad==0){
-		printf("Listo para recibir la senal SIGUSR1. "
+		printf("Listo para recibir la senal SIGUSR1.\n"
 		signal(SIGUSR1, signal_handler);
 		signal(SIGINT, salida);
 	}
