@@ -1,5 +1,5 @@
 CC=gcc
-SRC=main.c
+SRC=hora.c
 CFLAGS=-Wall -std=c17
 
 BIN=hora
