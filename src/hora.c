@@ -30,7 +30,7 @@ void salida(int signum){
 void main(int argc, char* argv[]){
 	int contad=0;
 	printf("Proceso hora ejecutandose. PID=%d\n",getpid());
-	while(conta==0){
+	while(contad==0){
 		printf("Listo para recibir la senal SIGUSR1. "
 		signal(SIGUSR1, signal_handler);
 		signal(SIGINT, salida);
