@@ -36,7 +36,7 @@ void main(int argc, char* argv[]){
 		printf("Listo para recibir la senal SIGUSR1.\n"
 		signal(SIGUSR1, signal_handler);
 		signal(SIGINT, salida);
-		signal(SIGUSR1,SIG_IGN);
+		signal(SIGUSR2,SIG_IGN);
 		signal(SIGTERM,SIG_IGN);
 	}
 }
