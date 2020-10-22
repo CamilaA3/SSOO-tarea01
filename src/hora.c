@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
 	signal(SIGUSR2,SIG_IGN);
 	signal(SIGTERM,SIG_IGN);
 	while(contad==0){
-		sleep(3);
+		sleep(2);
 		printf("Listo para recibir la senal SIGUSR1.\n");
 	}
 	return 0;
