@@ -1,10 +1,11 @@
 Tarea 1 de la asignatura "Sistemas Operativos".
 
-El archivo hora.c es el ejecutable para la tarea. En este se importan 4 librerias del lenguaje C:
+El archivo hora.c es el ejecutable para la tarea. En este se importan 5 librerias del lenguaje C:
 - signal.h para poder trabajar con la funcion signal(). Permitiendo la recepcion y manipulacion de las señales.
 - time.h nos ayuda a definir la fecha actual en la que se ejecuta el codigo.
 - stdio.h para el desarrollo de las funciones.
 - unistd.h usado para la funcion getpid()
+- stdlib.h permite el funcionamiento de la funcion sleep()
 
 Se escribieron 3 funciones y el main.
 void tiempo() Hace uso de la estructure tiempo, entregada por la libreria time. Se crea un arreglo de largo 100 que almacenara la fecha actual. Definimos la hora actual. Junto con la structura de time, adquerimos el formato pedido y lo almacenamos en el arreglo previemnte descrito.
