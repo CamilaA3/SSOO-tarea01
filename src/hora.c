@@ -12,14 +12,6 @@ void salida(int signum){
 	}
 }
 
-//Verifica el PID de la señal
-void signal_handler (int signumero)
-{
-	if (signumero == getpid()){
-		printf("Senal SIGUSR1 recibida: ");
-		tiempo();
-	}
-}
 void tiempo(){
     char final[100];//Cadena de caracteres que nos indicara el tiempo al final de la funcion.
     time_t tiempo= time(0);//Se crea la variable y la definimos vacia para evitar problemas futuros.
@@ -28,7 +20,16 @@ void tiempo(){
     printf("%s\n", final);
 }
 
-void main(int argc, char* argv[]){
+//Verifica el PID de la señal
+void signal_handler (int signumero)
+{
+	if (signumero == getpid()){
+		printf("Senal SIGUSR1 recibida: ");
+		tiempo();
+	}
+}
+
+int main(int argc, char* argv[]){
 	int contad=0;
 	printf("Proceso hora ejecutandose. PID=%d ",getpid());
 	while(contad==0){
@@ -39,4 +40,5 @@ void main(int argc, char* argv[]){
 		signal(SIGUSR2,SIG_IGN);
 		signal(SIGTERM,SIG_IGN);
 	}
+	return 0;
 }
