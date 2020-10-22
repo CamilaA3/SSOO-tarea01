@@ -23,7 +23,7 @@ void tiempo(){
 //Verifica el PID de la señal
 void signal_handler (int signumero)
 {
-	if (signumero == getpid()){
+	if (signumero == SIGUSR1){
 		printf("Senal SIGUSR1 recibida: ");
 		tiempo();
 	}
