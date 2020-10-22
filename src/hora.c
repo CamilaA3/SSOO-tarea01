@@ -31,14 +31,14 @@ void signal_handler (int signumero)
 
 int main(int argc, char* argv[]){
 	int contad=0;
-	printf("Proceso hora ejecutandose. PID=%d ",getpid());
+	printf("Proceso hora ejecutandose. PID=%d \n",getpid());
+	signal(SIGUSR1, signal_handler);
+	signal(SIGINT, salida);
+	signal(SIGUSR2,SIG_IGN);
+	signal(SIGTERM,SIG_IGN);
 	while(contad==0){
 		sleep(3);
 		printf("Listo para recibir la senal SIGUSR1.\n");
-		signal(SIGUSR1, signal_handler);
-		signal(SIGINT, salida);
-		signal(SIGUSR2,SIG_IGN);
-		signal(SIGTERM,SIG_IGN);
 	}
 	return 0;
 }
